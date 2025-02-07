@@ -15,6 +15,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_node
 {
@@ -97,8 +98,6 @@ void	set_split_loc(t_loc loc, t_chunk *max, t_chunk *mid, t_chunk *min);
 int		chunk_max_value(t_data *data, t_chunk *chunk);
 void	sort_main(t_data *data);
 int		main(int argc, char **argv);
-void	check_duplocates(int *arr, int *sorted, int n);
-int		find_index(int *sorted, int n, int value);
 void	normalize_numbers(int *arr, int *sorted, int n);
 
 #endif

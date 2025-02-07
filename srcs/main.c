@@ -10,13 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <limits.h>
-#include <unistd.h>
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-long	ft_atol(const char *str)
+static long	ft_atol(const char *str)
 {
 	long	result;
 	int		sign;
@@ -45,7 +42,7 @@ long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-int	count_tokens(int argc, char **argv)
+static int	count_tokens(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -70,7 +67,7 @@ int	count_tokens(int argc, char **argv)
 	return (count);
 }
 
-void	parse_args(int *arr, int argc, char **argv)
+static void	parse_args(int *arr, int argc, char **argv)
 {
 	int		i;
 	int		j;

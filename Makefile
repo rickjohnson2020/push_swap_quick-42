@@ -12,8 +12,8 @@
 
 NAME = push_swap
 
-SRCS = srcs/main.c srcs/utils.c srcs/sort/quick_arr.c srcs/sort/sort_main.c \
-	   srcs/sort/sort_small.c srcs/sort/sort_small_helpers.c \
+SRCS = srcs/main.c srcs/error_utils.c srcs/sort/quick_arr.c srcs/sort/sort_main.c \
+	   srcs/sort/sort_small.c srcs/sort/sort_small_helpers.c srcs/normalize.c \
 	   srcs/stack/general_utils.c srcs/stack/operation_utils.c \
 	   srcs/stack/push_ops.c srcs/stack/rotate_ops.c srcs/stack/r_rotate_ops.c \
 	   srcs/stack/swap_ops.c srcs/sort/quick_stack.c srcs/sort/sort_chunk_small.c \

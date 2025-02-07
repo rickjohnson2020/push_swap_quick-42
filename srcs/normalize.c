@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   normalize.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: riyano <riyano@student.42london.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 16:04:35 by riyano            #+#    #+#             */
-/*   Updated: 2025/02/07 16:21:35 by riyano           ###   ########.fr       */
+/*   Created: 2025/02/07 19:46:52 by riyano            #+#    #+#             */
+/*   Updated: 2025/02/07 19:47:28 by riyano           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	error_and_exit(void)
-{
-	write(2, "Error\n", 6);
-	exit(EXIT_FAILURE);
-}
-
-void	check_duplicates(int *arr, int *sorted, int n)
+static void	check_duplicates(int *arr, int *sorted, int n)
 {
 	int	i;
 
@@ -36,7 +30,7 @@ void	check_duplicates(int *arr, int *sorted, int n)
 	}
 }
 
-int	find_index(int *sorted, int n, int value)
+static int	find_index(int *sorted, int n, int value)
 {
 	int	left;
 	int	right;
