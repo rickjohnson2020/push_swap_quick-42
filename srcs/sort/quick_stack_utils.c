@@ -74,7 +74,6 @@ int	chunk_max_value(t_data *data, t_chunk *chunk)
 		if (cur->value > max)
 			max = cur->value;
 		cur = get_next_node(cur, chunk->loc);
-		//TODO: check
 		if (!cur)
 			break ;
 	}

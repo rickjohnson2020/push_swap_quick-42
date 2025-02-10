@@ -106,7 +106,7 @@ int	main(int argc, char **argv)
 		return (0);
 	total = count_tokens(argc, argv);
 	if (total == 0)
-		return (0);
+		error_and_exit();
 	arr = (int *)malloc(sizeof(int) * total);
 	if (!arr)
 		error_and_exit();

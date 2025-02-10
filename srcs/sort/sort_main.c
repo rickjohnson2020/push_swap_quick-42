@@ -12,9 +12,13 @@
 
 #include "../../includes/push_swap.h"
 
+static int	is_sorted(t_data *data);
+
 void	sort_main(t_data *data)
 {
-	if (data->a->size == 2)
+	if (data->a->size <= 1 || is_sorted(data))
+		return ;
+	else if (data->a->size == 2)
 	{
 		if (data->a->top->value > data->a->bottom->value)
 			sa(data->a);
@@ -27,4 +31,32 @@ void	sort_main(t_data *data)
 		sort_five(data->a, data->b);
 	else
 		quick_sort_stack(data);
+}
+
+static int	is_sorted(t_data *data)
+{
+	int		size;
+	t_node	*cur;
+	t_node	*next;
+	int		sorted;
+	t_node	*temp;
+
+	sorted = 1;
+	cur = data->a->top;
+	next = data->a->top->next;
+	size = data->a->size;
+	while (size-- > 1)
+	{
+		if (cur->value > next->value)
+		{
+			sorted = 0;
+			break ;
+		}
+		temp = next;
+		cur = next;
+		next = temp->next;
+		if (!next)
+			break ;
+	}
+	return (sorted);
 }

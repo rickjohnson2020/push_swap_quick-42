@@ -35,21 +35,17 @@ static void	split_chunk(t_data *data, t_chunk *to_split, t_split *dest)
 		else
 			dest->min.size += move_from_to(data, to_split->loc, dest->min.loc);
 		cur = next;
-		//TODO: Check
-		//if (!cur)
-		//	break ;
 	}
 }
 
-//TODO:
 static void	rec_chunk_sort(t_data *data, t_chunk *to_sort)
 {
 	t_split	dest;
 
-//	if (to_sort->loc == BOTTOM_A && data->a->size == to_sort->size)
-//		to_sort->loc = TOP_A;
-//	if (to_sort->loc == BOTTOM_B && data->b->size == to_sort->size)
-//		to_sort->loc = TOP_B;
+	if (to_sort->loc == BOTTOM_A && data->a->size == to_sort->size)
+		to_sort->loc = TOP_A;
+	if (to_sort->loc == BOTTOM_B && data->b->size == to_sort->size)
+		to_sort->loc = TOP_B;
 	if (to_sort->size <= 3)
 	{
 		if (to_sort->size == 3)

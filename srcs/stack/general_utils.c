@@ -80,7 +80,6 @@ t_data	*init_data(int *arr, int size)
 
 void	free_data(t_data *data)
 {
-	//TODO:
 	if (data)
 	{
 		if (data->a)
