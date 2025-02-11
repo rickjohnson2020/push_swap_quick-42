@@ -99,5 +99,7 @@ int		chunk_max_value(t_data *data, t_chunk *chunk);
 void	sort_main(t_data *data);
 int		main(int argc, char **argv);
 void	normalize_numbers(int *arr, int *sorted, int n);
+int		free_split_and_error(char **split);
+void	free_arr_and_exit(int *arr);
 
 #endif

@@ -13,7 +13,7 @@
 #include "../includes/push_swap.h"
 #include "../libft/libft.h"
 
-static long	ft_atol(const char *str)
+static int	ft_atol(const char *str, long *out)
 {
 	long	result;
 	int		sign;
@@ -24,22 +24,32 @@ static long	ft_atol(const char *str)
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
 	{
-		if (str[i] == '-')
+		if (str[i++] == '-')
 			sign = -1;
-		i++;
 	}
 	if (str[i] == '\0')
-		error_and_exit();
+		return (-1);
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			error_and_exit();
+			return (-1);
 		result = result * 10 + (str[i++] - '0');
 		if ((sign == 1 && result > INT_MAX)
 			|| (sign == -1 && -(result) < INT_MIN))
-			error_and_exit();
+			return (-1);
 	}
-	return (result * sign);
+	*out = result * sign;
+	return (0);
+}
+
+static void	free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+		free(split[i++]);
+	free(split);
 }
 
 static int	count_tokens(int argc, char **argv)
@@ -60,14 +70,12 @@ static int	count_tokens(int argc, char **argv)
 		while (split[j++])
 			count++;
 		j = 0;
-		while (split[j])
-			free(split[j++]);
-		free(split);
+		free_split(split);
 	}
 	return (count);
 }
 
-static void	parse_args(int *arr, int argc, char **argv)
+static int	parse_args(int *arr, int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -81,18 +89,17 @@ static void	parse_args(int *arr, int argc, char **argv)
 	{
 		split = ft_split(argv[i++], ' ');
 		if (!split)
-			error_and_exit();
+			return (-1);
 		j = 0;
 		while (split[j])
 		{
-			val = ft_atol(split[j++]);
+			if (ft_atol(split[j++], &val) == -1)
+				return (free_split_and_error(split));
 			arr[idx++] = (int)val;
 		}
-		j = 0;
-		while (split[j])
-			free(split[j++]);
-		free(split);
+		free_split(split);
 	}
+	return (0);
 }
 
 int	main(int argc, char **argv)
@@ -110,7 +117,8 @@ int	main(int argc, char **argv)
 	arr = (int *)malloc(sizeof(int) * total);
 	if (!arr)
 		error_and_exit();
-	parse_args(arr, argc, argv);
+	if (parse_args(arr, argc, argv) == -1)
+		free_arr_and_exit(arr);
 	sorted = malloc(sizeof(int) * total);
 	normalize_numbers(arr, sorted, total);
 	data = init_data(arr, total);

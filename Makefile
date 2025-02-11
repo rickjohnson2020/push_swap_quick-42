@@ -22,7 +22,7 @@ SRCS = srcs/main.c srcs/error_utils.c srcs/sort/quick_arr.c srcs/sort/sort_main.
 OBJS = $(SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
